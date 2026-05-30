@@ -1,0 +1,40 @@
+{
+  "name": "@deadbyte/runtime",
+  "version": "4.0.0",
+  "description": "Tipos, schemas Zod, manifests e utilitários compartilhados entre o bot runner e o spawner do DeadByte v4.",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "defu": "^6.1.7",
+    "destr": "^2.0.5",
+    "ohash": "^1.1.6",
+    "pathe": "^2.0.3",
+    "ufo": "^1.6.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "eslint": "^9.39.4",
+    "tsx": "^4.22.3",
+    "typescript": "^5.9.3",
+    "unbuild": "^3.6.1",
+    "vitest": "^2.1.9"
+  }
+}
