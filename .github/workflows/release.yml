@@ -8,7 +8,6 @@ on:
         required: true
         type: choice
         options:
-          - no-bump
           - patch
           - minor
           - major
@@ -52,14 +51,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Update changelog, bump version, commit and tag
-        run: |
-          BUMP="${{ github.event.inputs.bump }}"
-          if [ "$BUMP" = "no-bump" ]; then
-            VERSION=$(node -p "require('./package.json').version")
-            pnpm changelogen -r "${VERSION}" --release --push
-          else
-            pnpm changelogen --${BUMP} --release --push
-          fi
+        run: pnpm changelogen --${{ github.event.inputs.bump }} --release --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
