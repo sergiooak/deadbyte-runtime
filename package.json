@@ -1,6 +1,6 @@
 {
   "name": "@deadbyte/runtime",
-  "version": "4.0.0",
+  "version": "3.9.9",
   "description": "Tipos, schemas Zod, manifests e utilitários compartilhados entre o bot runner e o spawner do DeadByte v4.",
   "type": "module",
   "main": "./dist/index.mjs",
