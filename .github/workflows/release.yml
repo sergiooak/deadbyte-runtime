@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: 'Version bump type'
+        description: "Version bump type"
         required: true
         type: choice
         options:
+          - no-bump
           - patch
           - minor
           - major
@@ -50,8 +51,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Bump version, update changelog, commit and tag
-        run: pnpm changelogen --${{ github.event.inputs.bump }} --release --push
+      - name: Update changelog, bump version, commit and tag
+        run: |
+          if [ "${{ github.event.inputs.bump }}" = "no-bump" ]; then
+            pnpm changelogen --release --push
+          else
+            pnpm changelogen --${{ github.event.inputs.bump }} --release --push
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
