@@ -53,10 +53,16 @@ jobs:
 
       - name: Update changelog, bump version, commit and tag
         run: |
-          if [ "${{ github.event.inputs.bump }}" = "no-bump" ]; then
-            pnpm changelogen --release --push
+          BUMP="${{ github.event.inputs.bump }}"
+          if [ "$BUMP" = "no-bump" ]; then
+            VERSION=$(node -p "require('./package.json').version")
+            pnpm changelogen "v${VERSION}" --output CHANGELOG.md
+            git add CHANGELOG.md
+            git diff --cached --quiet || git commit -m "chore: release v${VERSION}"
+            git tag "v${VERSION}"
+            git push --follow-tags
           else
-            pnpm changelogen --${{ github.event.inputs.bump }} --release --push
+            pnpm changelogen --${BUMP} --release --push
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
