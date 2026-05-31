@@ -56,11 +56,7 @@ jobs:
           BUMP="${{ github.event.inputs.bump }}"
           if [ "$BUMP" = "no-bump" ]; then
             VERSION=$(node -p "require('./package.json').version")
-            pnpm changelogen "v${VERSION}" --output CHANGELOG.md
-            git add CHANGELOG.md
-            git diff --cached --quiet || git commit -m "chore: release v${VERSION}"
-            git tag "v${VERSION}"
-            git push --follow-tags
+            pnpm changelogen -r "${VERSION}" --release --push
           else
             pnpm changelogen --${BUMP} --release --push
           fi
