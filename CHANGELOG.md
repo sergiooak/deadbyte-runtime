@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v4.0.1
+
+[compare changes](https://github.com/sergiooak/deadbyte-runtime/compare/v4.0.0...v4.0.1)
+
+### 🚀 Enhancements
+
+- **command:** Add command group definition and related functionality ([58007b0](https://github.com/sergiooak/deadbyte-runtime/commit/58007b0))
+
+### 🏡 Chore
+
+- **changelog:** Remove version setting entry and simplify release workflow ([90bacbd](https://github.com/sergiooak/deadbyte-runtime/commit/90bacbd))
+
+### ❤️ Contributors
+
+- Sergio Carvalho ([@sergiooak](https://github.com/sergiooak))
+
 ## v4.0.0
 
 
