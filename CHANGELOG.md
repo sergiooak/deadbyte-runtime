@@ -34,7 +34,6 @@
 ### 🏡 Chore
 
 - Initial project scaffolding ([7a42039](https://github.com/sergiooak/deadbyte-runtime/commit/7a42039))
-- Set version to 3.9.9 and simplify release workflow ([254af77](https://github.com/sergiooak/deadbyte-runtime/commit/254af77))
 
 ### ✅ Tests
 
