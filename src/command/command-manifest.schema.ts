@@ -23,11 +23,22 @@ export const DeadByteCommandManifestSchema = z.object({
     groups: z.boolean(),
     implicit: z.boolean()
   }),
-  configFields: z.array(CommandConfigFieldSchema)
+  configFields: z.array(CommandConfigFieldSchema),
+  order: z.number().optional(),
+  hiddenFromMenu: z.boolean().optional()
+})
+
+export const DeadByteCommandGroupDefinitionSchema = z.object({
+  id: z.string().min(1),
+  emoji: z.string().optional(),
+  title: z.string().min(1),
+  order: z.number().optional(),
+  hidden: z.boolean().optional()
 })
 
 export const DeadByteBotManifestSchema = z.object({
   name: z.string().min(1),
   version: z.string().min(1),
-  commands: z.array(DeadByteCommandManifestSchema)
+  commands: z.array(DeadByteCommandManifestSchema),
+  groups: z.array(DeadByteCommandGroupDefinitionSchema).optional()
 })
